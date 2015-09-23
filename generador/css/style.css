@@ -1,0 +1,12 @@
+.container {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.pt10 {
+	padding-top: 10px;
+}
+.mt10 {
+	margin-top: 10px;
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+		<meta http-equiv="Pragma" content="nocache">
+		<meta HTTP-EQUIV="Expires" CONTENT="-1">
+		<title>Generador de Codigo RichMedia V3</title>
+		
+		<!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="css/bootstrap.min.css?v3">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- JS jquery bootstrap angular -->
+  		<script src="js/angular.min.js"></script>
+  		<script src="js/angular-sanitize.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="http://cdn.eluniversal.com/js/eu4/richMedia.js"></script>
+		<script src="http://ox-d.eluniversal.com/w/1.0/jstag"></script>
+		<script src="js/controller.js?v2"></script>
+	</head>
+	<body ng-app="bannerAdministration">
+		<!-- Inicio Header -->
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<img src="http://cdn.eluniversal.com/images/eu4/back/logo-eluniversal.gif" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Inicio Header -->
+		<div role="tabpanel">
+
+			<div class="row">	<!-- Inicio Nav tabs -->
+				<div class="col-md-6 col-md-offset-3">
+					<ul class="nav nav-pills nav-justified" role="tablist">
+						<li role="presentation" class="active"><a href="#generator" aria-controls="generator" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Generador</a></li>
+						<li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Visualizador</a></li>
+						<li role="presentation"><a href="#administrator" aria-controls="administrator" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-cog" aria-hidden="true"> Administrador</a></li>
+					</ul>
+				</div>
+			</div>	<!-- Fin Nav tabs -->
+
+			<div class="tab-content">	<!-- Inicio Tab panes -->
+				<div role="tabpanel" class="tab-pane active" id="generator">	<!-- Generator Panel -->
+					<div ng-controller="bannerController">	<!-- Inicio de Directiva APP Angular -->
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<div class="page-header">
+									<h3>Generador de c&oacute;digo HTML para Publicidades Richmedia</h3>
+								</div>
+									<ol>
+										<li>Llena los campos </li>
+										<li>Presionar el boton Generar</li>
+										<li>Copia y pega en el campo de HTML en OX</li>
+									</ol>
+								<div class="col-md-12 container">
+									<div class="form-group">
+										<label for="type">Tipo de RichMedia</label>
+										<select class="form-control" name="type" ng-model="type_banner" ng-change="change_type()" ng-options="banner.type as banner.displayName for banner in banners">
+										</select>
+									</div>
+									<form name="banner_form" class="my-form" role="form">
+										<div class="form-group" ng-show="show_ruta1">
+											<label>Material #1</label> 
+											<div class="input-group">
+												<span class="input-group-addon">Url</span>
+												<input type="text" name="model_ruta1" class="form-control" placeholder="Indicar Ruta Aqui" ng-model="model_ruta1" ng-pattern="/[\W.](jpg|png|jpeg|gif|ico|bmp|swf|JPG|PNG|JPEG|GIF|ICO|BMP|SWF)/" ngRequired="show_ruta1">
+											</div>
+											<div class="alert alert-danger mt10" role="alert" ng-show="banner_form.model_ruta1.$error.pattern">
+		  										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		  										<span class="sr-only">Error:</span>
+		  										Por favor introducir la URL valida de un Material en OX
+											</div>
+										</div>
+										<div class="form-group" ng-show="show_ruta2">
+											<label for="model_ruta2">Material #2</label> 
+											<div class="input-group">
+												<span class="input-group-addon">Url</span>
+												<input type="text" name="model_ruta2" class="form-control" placeholder="Indicar Ruta Aqui" ng-model="model_ruta2" ng-pattern="/[\W.](jpg|png|jpeg|gif|ico|bmp|swf|JPG|PNG|JPEG|GIF|ICO|BMP|SWF)/" ngRequired="show_ruta2">
+											</div>
+											<div class="alert alert-danger mt10" role="alert" ng-show="banner_form.model_ruta2.$error.pattern">
+		  										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		  										<span class="sr-only">Error:</span>
+		  										Por favor introducir la URL valida de un Material en OX
+											</div>
+										</div>
+										<div class="form-group" ng-show="show_ruta3">
+											<label for="model_ruta3">Material #3</label>
+											<div class="input-group">
+												<span class="input-group-addon">Url</span>
+												<input type="text" name="model_ruta3" class="form-control" placeholder="Indicar Ruta Aqui" ng-model="model_ruta3" ng-pattern="/[\W.](jpg|png|jpeg|gif|ico|bmp|swf|JPG|PNG|JPEG|GIF|ICO|BMP|SWF)/" ngRequired="show_ruta3">
+											</div>
+											<div class="alert alert-danger mt10" role="alert" ng-show="banner_form.model_ruta3.$error.pattern">
+		  										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		  										<span class="sr-only">Error:</span>
+		  										Por favor introducir la URL valida de un Material en OX
+											</div>
+										</div>
+										<div class="form-group" ng-show="show_codigo_tercero">
+											<label for="model_codigoTercero">Codigo Tercero</label>
+											<textarea class="form-control" rows="3" placeholder="Aqui va el codigo del tercero" ng-model="model_codigoTercero" ngRequired="show_codigo_tercero"></textarea>
+										</div>
+										<div class="form-group" ng-show="show_tag_script">
+											<label for="model_tagScript">Tag Script</label>
+											<textarea class="form-control" rows="3" placeholder="Aqui va el codigo del tercero" ng-model="model_tagScript" ngRequired="model_tagScript"></textarea>
+										</div>
+										<div class="form-group" ng-show="show_richMedia">
+											<label for="codigo_richMedia">Codigo RichMedia</label>
+											<textarea class="form-control" rows="12" placeholder="<-----Codigo RichMedia------>" ng-model="model_richMedia"></textarea>
+										</div>
+										<div class="col-md-5 col-md-offset-5" ng-show="show_buttons">
+												<button type="button" class="btn btn-primary active" ng-disabled="!banner_form.$dirty || banner_form.$invalid" ng-click="generar_banner()">Generar</button>
+												<!-- <button type="button" class="btn btn-primary active" ng-disabled="preview_disabled" ng-click="generarPreviewBanner()">Preview</button> -->
+										</div>
+									</form>
+								</div>
+							</div>
+							<div id="iframeBanner" align="center" class="col-md-10 col-md-offset-1 container" style="margin-top: 15px;" ng-show="showBannerPreview">
+								<iframe id="iframeTest" frameborder="0" style="width: 100%;"></iframe>
+							</div>
+						</div>
+					</div>	<!-- Fin de Directiva APP Angular -->
+				</div>	<!-- Fin Generator Panel -->
+
+			    <div role="tabpanel" class="tab-pane" id="preview">	<!-- Inicio Preview -->
+					<div ng-controller="previewController">	<!-- Inicio de Directiva APP Angular -->
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<div class="page-header">
+									<h3 style="text-align:center;">Previsualizador de Posiciones</h3>
+								</div>
+									<ol>
+										<li>Escribir el Ad Unit ID</li>
+										<li>Presionar el boton Preview</li>
+									</ol>
+								<div class="col-md-12 container">
+									<form name="banner_form2" class="my-form" role="form">
+										<div class="form-group">
+											<label for="model_AdUnitId">Ad Unit ID</label>
+											<div class="input-group">
+												<span class="input-group-addon">ID</span>
+												<input type="text" name="model_AdUnitId" class="form-control" placeholder="Indicar Ad Unit ID Aqui" ng-model="model_AdUnitId">
+											</div>
+										</div>
+										<div class="col-md-5 col-md-offset-5">
+											<button type="button" class="btn btn-primary active" ng-disabled="!banner_form2.$dirty" ng-click="generarPreview()">Preview</button>
+										</div>
+									</form>
+								</div>
+								<div class="col-md-12 container" style="margin-top: 15px;" ng-show="showBannerData">
+									<div class="col-md-3 col-md-offset-3">
+										<label>Ad Unit ID:</label><br>
+										<label>Ad ID:</label><br>
+										<label>width:</label><br>
+										<label>Height:</label><br>
+										<label>Type:</label><br>
+									</div>
+									<div class="col-md-3">
+										<label>{{bannerData.auid}}</label><br>
+										<label>{{bannerData.chain[0].ad_id}}</label><br>
+										<label>{{bannerData.chain[0].width}}</label><br>
+										<label>{{bannerData.chain[0].height}}</label><br>
+										<label>{{bannerData.chain[0].type}}</label><br>
+									</div>
+								</div>
+							</div>
+							<div id="testContainer" align="center" class="col-md-10 col-md-offset-1 container" style="margin-top: 15px;" ng-show="showBannerData">
+							</div>
+						</div>
+
+					</div>	<!-- Fin de Directiva APP Angular -->
+				</div>	<!-- Fin Preview -->
+
+				<div role="tabpanel" class="tab-pane" id="administrator">	<!-- Inicio Administrator -->
+					<div ng-controller="administratorController">	<!-- Inicio de Directiva APP Angular -->
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<div class="page-header">
+									<h3 style="text-align:center;">Administracion de Publicidades</h3>
+								</div>
+							</div>
+						</div>
+					</div>	<!-- Fin de Directiva APP Angular -->
+				</div>	<!-- Fin Administrator -->
+		
+			</div>	<!-- Fin Tab Panel -->
+		</div>
+
+	</body>
+</html>
